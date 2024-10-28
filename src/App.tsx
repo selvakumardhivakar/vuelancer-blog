@@ -12,18 +12,18 @@ interface Blog {
 function BlogList() {
   const [blogs, setBlogs] = useState([]);
 
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        const response = await axios.get(
-          "https://dev.to/api/articles?username=vuelancer"
-        );
-        setBlogs(response.data);
-      } catch (error) {
-        console.error("Error fetching blogs:", error);
-      }
-    };
+  const fetchBlogs = async () => {
+    try {
+      const response = await axios.get(
+        "https://dev.to/api/articles?username=vuelancer"
+      );
+      setBlogs(response.data);
+    } catch (error) {
+      console.error("Error fetching blogs:", error);
+    }
+  };
 
+  useEffect(() => {
     fetchBlogs();
   }, []);
 
